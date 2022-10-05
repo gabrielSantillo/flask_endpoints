@@ -16,7 +16,7 @@ def get_all_clients():
 
 @app.get('/api/loyal_clients')
 def get_clients_by_loyalty_points():
-    min_points = request.args.get('min_price')
+    min_points = request.args.get('min_points')
     results = run_statement("CALL get_clients_by_loyalty_points(?)", [min_points])
     if(type(results) == list):
         clients_json = json.dumps(results, default=str)
